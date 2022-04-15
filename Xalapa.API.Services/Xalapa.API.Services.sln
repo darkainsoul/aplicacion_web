@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xalapa.API.Services", "Xalapa.API.Services.csproj", "{67150E35-CCB4-4410-A666-DD5560CD0725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalapa.API.DataAccess", "..\Xalapa.API.DataAccess\Xalapa.API.DataAccess.csproj", "{3543755E-4110-4054-9ED3-9008AFA07AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalapa.API.Entities", "..\Xalapa.API.Entities\Xalapa.API.Entities.csproj", "{C5360B75-635F-4C0C-B397-A405CD055AFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalapa.API.BusinessLogic", "..\Xalapa.API.BusinessLogic\Xalapa.API.BusinessLogic.csproj", "{BE986AF8-54FF-4FFC-AB1D-DB67CE4CF4A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67150E35-CCB4-4410-A666-DD5560CD0725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67150E35-CCB4-4410-A666-DD5560CD0725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67150E35-CCB4-4410-A666-DD5560CD0725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67150E35-CCB4-4410-A666-DD5560CD0725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3543755E-4110-4054-9ED3-9008AFA07AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3543755E-4110-4054-9ED3-9008AFA07AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3543755E-4110-4054-9ED3-9008AFA07AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3543755E-4110-4054-9ED3-9008AFA07AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5360B75-635F-4C0C-B397-A405CD055AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5360B75-635F-4C0C-B397-A405CD055AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5360B75-635F-4C0C-B397-A405CD055AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5360B75-635F-4C0C-B397-A405CD055AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE986AF8-54FF-4FFC-AB1D-DB67CE4CF4A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE986AF8-54FF-4FFC-AB1D-DB67CE4CF4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE986AF8-54FF-4FFC-AB1D-DB67CE4CF4A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE986AF8-54FF-4FFC-AB1D-DB67CE4CF4A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6804AA38-CA27-41B4-8CC1-DB3652235D5A}
+	EndGlobalSection
+EndGlobal
