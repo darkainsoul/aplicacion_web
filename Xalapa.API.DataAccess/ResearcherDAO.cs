@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using Xalapa.API.Entities;
 
 namespace Xalapa.API.DataAccess
@@ -31,7 +32,7 @@ namespace Xalapa.API.DataAccess
             {
                 var cadenaConexion = new Connection().CadenaConexion();
                 var conexion = new MySqlConnection(cadenaConexion);
-                string query = "INSERT INTO proyecto_xalapa.tb_researchers (name) VALUES ('" + entity.name + "', '" + entity.academic_grade + "', '" + entity.speciality + "', '" + entity.knowledge_areas + "', " + entity.years_of_experience + "); ";
+                string query = "INSERT INTO proyecto_xalapa.tb_researchers (name, academic_grade, speciality, knowledge_areas, years_of_experience) VALUES ('" + entity.name + "', '" + entity.academic_grade + "', '" + entity.speciality + "', '" + entity.knowledge_areas + "', " + entity.years_of_experience + "); ";
                 MySqlCommand MyCommand2 = new MySqlCommand(query, conexion);
                 conexion.Open();
                 int rowsInserted = MyCommand2.ExecuteNonQuery();
@@ -100,9 +101,9 @@ namespace Xalapa.API.DataAccess
             return result;
         }
 
-        public Researchers GetList()
-        {
-            Researchers result = new Researchers();
+        public IEnumerable<Researchers> GetList()
+        {            
+            List<Researchers> listResult = new List<Researchers>();
             try
             {
                 var cadenaConexion = new Connection().CadenaConexion();
@@ -115,6 +116,7 @@ namespace Xalapa.API.DataAccess
 
                 while (dataReader.Read())
                 {
+                    Researchers result = new Researchers();
                     result.id = Convert.ToInt32(dataReader["id"]);
                     result.name = dataReader["name"].ToString();
                     result.date_register = Convert.ToDateTime(dataReader["date_register"]);
@@ -122,6 +124,7 @@ namespace Xalapa.API.DataAccess
                     result.speciality = dataReader["speciality"].ToString();
                     result.knowledge_areas = dataReader["knowledge_areas"].ToString();
                     result.years_of_experience = Convert.ToInt32(dataReader["years_of_experience"]);
+                    listResult.Add(result);
                 }
 
                 dataReader.Close();
@@ -133,7 +136,7 @@ namespace Xalapa.API.DataAccess
                 string error = ex.Message;
             }
 
-            return result;
+            return listResult;
         }
     }
 }

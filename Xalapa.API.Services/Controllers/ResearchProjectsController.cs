@@ -21,14 +21,14 @@ namespace Xalapa.API.Services.Controllers
         public IEnumerable<ResearchProjects> Get()
         {
             ResearchProjectsBL bl = new ResearchProjectsBL();
-            yield return bl.GetList();
+            return bl.GetList();
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<ResearchProjects> Get(int id)
+        public ResearchProjects Get(int id)
         {
             ResearchProjectsBL bl = new ResearchProjectsBL();
-            yield return bl.Get(id);
+            return bl.Get(id);
         }
 
         [HttpPost]

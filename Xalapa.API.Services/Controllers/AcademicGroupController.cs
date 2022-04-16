@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Xalapa.API.BusinessLogic;
 using Xalapa.API.Entities;
+
 namespace Xalapa.API.Services.Controllers
 {
     [Route("[controller]")]
@@ -20,14 +21,14 @@ namespace Xalapa.API.Services.Controllers
         public IEnumerable<AcademicGroups> Get()
         {
             AcademicGroupsBL bl = new AcademicGroupsBL();
-            yield return bl.GetList();
+            return bl.GetList();
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<AcademicGroups> Get(int id)
+        public AcademicGroups Get(int id)
         {
             AcademicGroupsBL bl = new AcademicGroupsBL();
-            yield return bl.Get(id);
+            return bl.Get(id);
         }
 
         [HttpPost]

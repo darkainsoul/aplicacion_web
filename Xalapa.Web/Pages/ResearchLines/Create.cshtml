@@ -1,0 +1,30 @@
+﻿@page
+@model Xalapa.Web.Pages.ResearchLines.CreateModel
+@{
+    ViewData["Title"] = "Crear Linea de Investigacion";
+}
+<h4>Linea de Investigacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LineaInvestigacion.name" class="control-label"></label>
+                <input asp-for="LineaInvestigacion.name" class="form-control" placeholder="Ingresa el nombre" />
+                <span asp-validation-for="LineaInvestigacion.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear Linea de Investigacion" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

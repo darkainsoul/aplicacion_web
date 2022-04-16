@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xalapa.API.DataAccess;
 using Xalapa.API.Entities;
 
@@ -57,7 +58,7 @@ namespace Xalapa.API.BusinessLogic
             }
         }
 
-        public ResearchLines GetList()
+        public IEnumerable<ResearchLines> GetList()
         {
             try
             {

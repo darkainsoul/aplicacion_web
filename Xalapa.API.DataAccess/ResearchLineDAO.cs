@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using Xalapa.API.Entities;
 
 namespace Xalapa.API.DataAccess
@@ -31,7 +32,7 @@ namespace Xalapa.API.DataAccess
             {
                 var cadenaConexion = new Connection().CadenaConexion();
                 var conexion = new MySqlConnection(cadenaConexion);
-                string query = "INSERT INTO proyecto_xalapa.tb_research_lines (name, goals, common_objectives) VALUES ('" + entity.name + "');";
+                string query = "INSERT INTO proyecto_xalapa.tb_research_lines (name, goals, common_objectives) VALUES ('" + entity.name + "','" + entity.goals + "','" + entity.common_objectives + "');";
                 MySqlCommand MyCommand2 = new MySqlCommand(query, conexion);
                 conexion.Open();
                 int rowsInserted = MyCommand2.ExecuteNonQuery();
@@ -98,9 +99,9 @@ namespace Xalapa.API.DataAccess
             return result;
         }
 
-        public ResearchLines GetList()
+        public IEnumerable<ResearchLines> GetList()
         {
-            ResearchLines result = new ResearchLines();
+            List<ResearchLines> listResult = new List<ResearchLines>();
             try
             {
                 var cadenaConexion = new Connection().CadenaConexion();
@@ -113,11 +114,13 @@ namespace Xalapa.API.DataAccess
 
                 while (dataReader.Read())
                 {
+                    ResearchLines result = new ResearchLines();
                     result.id = Convert.ToInt32(dataReader["id"]);
                     result.name = dataReader["name"].ToString();
                     result.date_register = Convert.ToDateTime(dataReader["date_register"]);
                     result.goals = dataReader["goals"].ToString();
                     result.common_objectives = dataReader["common_objectives"].ToString();
+                    listResult.Add(result);
                 }
 
                 dataReader.Close();
@@ -129,7 +132,7 @@ namespace Xalapa.API.DataAccess
                 string error = ex.Message;
             }
 
-            return result;
+            return listResult;
         }
     }
 }

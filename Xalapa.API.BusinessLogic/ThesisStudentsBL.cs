@@ -1,12 +1,14 @@
 ﻿using System;
-using Xalapa.API.Entities;
+using System.Collections.Generic;
 using Xalapa.API.DataAccess;
+using Xalapa.API.Entities;
 
 namespace Xalapa.API.BusinessLogic
 {
     public class ThesisStudentsBL
     {
-        ThesisStudentDAO dao = new ThesisStudentDAO();
+        private ThesisStudentDAO dao = new ThesisStudentDAO();
+
         public void Delete(int entityId)
         {
             try
@@ -56,7 +58,7 @@ namespace Xalapa.API.BusinessLogic
             }
         }
 
-        public ThesisStudents GetList()
+        public IEnumerable<ThesisStudents> GetList()
         {
             try
             {

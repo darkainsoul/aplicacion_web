@@ -1,0 +1,40 @@
+﻿@page
+@model Xalapa.Web.Pages.ResearchProjects.DetailsModel
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1>Detalle</h1>
+
+<div>
+    <h4>Proyecto de Investigacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProyectoInvestigacion.id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProyectoInvestigacion.id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProyectoInvestigacion.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProyectoInvestigacion.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProyectoInvestigacion.date_register)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProyectoInvestigacion.date_register)
+        </dd>       
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ProyectoInvestigacion.id">Editar</a> |
+    <a asp-page="./Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

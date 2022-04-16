@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using Xalapa.API.Entities;
 
 namespace Xalapa.API.DataAccess
@@ -31,7 +32,7 @@ namespace Xalapa.API.DataAccess
             {
                 var cadenaConexion = new Connection().CadenaConexion();
                 var conexion = new MySqlConnection(cadenaConexion);
-                string query = "INSERT INTO proyecto_xalapa.tb_research_projects (name) VALUES ('" + entity.name + ");";
+                string query = "INSERT INTO proyecto_xalapa.tb_research_projects (name, thesis_topics) VALUES ('" + entity.name + "', '" + entity.thesis_topics + "');";
                 MySqlCommand MyCommand2 = new MySqlCommand(query, conexion);
                 conexion.Open();
                 int rowsInserted = MyCommand2.ExecuteNonQuery();
@@ -51,7 +52,7 @@ namespace Xalapa.API.DataAccess
                 var cadenaConexion = new Connection().CadenaConexion();
                 var conexion = new MySqlConnection(cadenaConexion);
 
-                string query = "UPDATE proyecto_xalapa.tb_research_projects SET name= '" + entity.name + " WHERE id = " + entity.id + ";";
+                string query = "UPDATE proyecto_xalapa.tb_research_projects SET name='" + entity.name + "', thesis_topics='" + entity.thesis_topics + "' WHERE id = " + entity.id + ";";
                 MySqlCommand MyCommand2 = new MySqlCommand(query, conexion);
                 conexion.Open();
                 int rowsInserted = MyCommand2.ExecuteNonQuery();
@@ -96,9 +97,9 @@ namespace Xalapa.API.DataAccess
             return result;
         }
 
-        public ResearchProjects GetList()
+        public IEnumerable<ResearchProjects> GetList()
         {
-            ResearchProjects result = new ResearchProjects();
+            List<ResearchProjects> listResult = new List<ResearchProjects>();
             try
             {
                 var cadenaConexion = new Connection().CadenaConexion();
@@ -111,9 +112,11 @@ namespace Xalapa.API.DataAccess
 
                 while (dataReader.Read())
                 {
+                    ResearchProjects result = new ResearchProjects();
                     result.id = Convert.ToInt32(dataReader["id"]);
                     result.name = dataReader["name"].ToString();
                     result.date_register = Convert.ToDateTime(dataReader["date_register"]);
+                    listResult.Add(result);
                 }
 
                 dataReader.Close();
@@ -125,7 +128,7 @@ namespace Xalapa.API.DataAccess
                 string error = ex.Message;
             }
 
-            return result;
+            return listResult;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using Xalapa.API.Entities;
 
 namespace Xalapa.API.DataAccess
@@ -96,9 +97,9 @@ namespace Xalapa.API.DataAccess
             return result;
         }
 
-        public ResearchCenters GetList()
+        public IEnumerable<ResearchCenters> GetList()
         {
-            ResearchCenters result = new ResearchCenters();
+            List<ResearchCenters> listResult = new List<ResearchCenters>();
             try
             {
                 var cadenaConexion = new Connection().CadenaConexion();
@@ -111,9 +112,11 @@ namespace Xalapa.API.DataAccess
 
                 while (dataReader.Read())
                 {
+                    ResearchCenters result = new ResearchCenters();
                     result.id = Convert.ToInt32(dataReader["id"]);
                     result.name = dataReader["name"].ToString();
                     result.date_register = Convert.ToDateTime(dataReader["date_register"]);
+                    listResult.Add(result);
                 }
 
                 dataReader.Close();
@@ -125,7 +128,7 @@ namespace Xalapa.API.DataAccess
                 string error = ex.Message;
             }
 
-            return result;
+            return listResult;
         }
     }
 }

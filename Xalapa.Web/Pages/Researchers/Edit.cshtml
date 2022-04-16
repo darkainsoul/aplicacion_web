@@ -1,0 +1,32 @@
+﻿@page
+@model Xalapa.Web.Pages.Researchers.EditModel
+@{
+    ViewData["Title"] = "Crear Investigador";
+}
+<h4>Investigador</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="Investigador.id" type="hidden" />
+                <label asp-for="Investigador.name" class="control-label"></label>
+                <input asp-for="Investigador.name" class="form-control" placeholder="Ingresa el nombre" />
+                <span asp-validation-for="Investigador.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Editar Investigador" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
